@@ -1,15 +1,26 @@
-/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
 /*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
+Cores
+- #4F3E8C: uma cor azul escura
+- #9177F2: uma cor azul claro
+- #221E40: uma cor azul muito escura
+- #161426: uma cor azul quase preta
+- #46A66F: uma cor verde azulada
+- #D92B04: uma cor laranja escura
+- #45858C: uma cor azul verde
+- #A0D9D9: uma cor azul claro
+- #D9C589: uma cor bege
+- #BF9765: uma cor marrom claro
+- #F2A88D: uma cor laranja claro
+- #D9765F: uma cor laranja
+- #BF8821: uma cor marrom
 
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
+font-family: 'Caveat', cursive;
+font-family: 'EB Garamond', serif;
+font-family: 'Marhey', cursive;
+font-family: 'Mynerve', cursive;
+font-family: 'Roboto', sans-serif;
+
+*/
 
 html {
   color: #222;
