@@ -5,11 +5,15 @@ Cores
 - #221E40: uma cor azul muito escura
 - #161426: uma cor azul quase preta
 - #46A66F: uma cor verde azulada
+
 - #D92B04: uma cor laranja escura
 - #45858C: uma cor azul verde
 - #A0D9D9: uma cor azul claro
 - #D9C589: uma cor bege
 - #BF9765: uma cor marrom claro
+
+- #8C1C3A: uma cor marrom
+- #8F244E: uma cor marrom
 - #F2A88D: uma cor laranja claro
 - #D9765F: uma cor laranja
 - #BF8821: uma cor marrom
@@ -32,9 +36,9 @@ header{
   max-width: 100%;
   height: 90vh;
   /*Deixar a cor com menos brilho*/
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.2)), url(../images/headercapa.jpg);
-  /*background-repeat: no-repeat;
-  background-position: center;*/
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.2)), url('../images/headerCapa.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   position: relative;
 }

@@ -1,0 +1,52 @@
+/*
+Cores
+- #4F3E8C: uma cor azul escura
+- #9177F2: uma cor azul claro
+- #221E40: uma cor azul muito escura
+- #161426: uma cor azul quase preta
+- #46A66F: uma cor verde azulada
+- #D92B04: uma cor laranja escura
+- #45858C: uma cor azul verde
+- #A0D9D9: uma cor azul claro
+- #D9C589: uma cor bege
+- #BF9765: uma cor marrom claro
+- #F2A88D: uma cor laranja claro
+- #D9765F: uma cor laranja
+- #BF8821: uma cor marrom
+
+font-family: 'Caveat', cursive;
+font-family: 'EB Garamond', serif;
+font-family: 'Marhey', cursive;
+font-family: 'Mynerve', cursive;
+font-family: 'Roboto', sans-serif;
+*/
+
+@media screen and (max-width: 630px){
+  /* Menu Hamburguer*/
+  header nav#nav-esq{
+    justify-content: space-between;
+  }
+  header nav#nav-esq ul#icone-menu{
+    display: flex;
+  }  
+  /* Menu Principal*/
+  header nav#nav-esq ul#menu-principal{
+    flex-direction: column;
+    width: 80%;
+    height: 85vh;
+    background: linear-gradient(rgba(4,157,217) 0%, rgba(54,176,224) 45%, rgba(60,179,113,.9) 100%);
+    padding-top: .5rem;
+    position: absolute;
+    top: 9.3rem;
+    right: 0;
+    z-index: 999;
+    display: nome;
+  }
+  header nav#nav-esq ul#menu-principal li{
+    margin: .5rem;
+    margin-left: 1rem;
+  } 
+  header nav#nav-esq ul#menu-principal li a{
+    font-size: 120%;
+  }       
+}

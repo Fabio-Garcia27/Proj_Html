@@ -1,0 +1,110 @@
+/*
+Cores
+- #4F3E8C: uma cor azul escura
+- #9177F2: uma cor azul claro
+- #221E40: uma cor azul muito escura
+- #161426: uma cor azul quase preta
+- #46A66F: uma cor verde azulada
+
+- #D92B04: uma cor laranja escura
+- #45858C: uma cor azul verde
+- #A0D9D9: uma cor azul claro
+- #D9C589: uma cor bege
+- #BF9765: uma cor marrom claro
+
+- #8C1C3A: uma cor marrom
+- #8F244E: uma cor marrom
+- #F2A88D: uma cor laranja claro
+- #D9765F: uma cor laranja
+- #BF8821: uma cor marrom
+
+- #BF7E04: amarelo queimado
+- #A64F03: amarelo queimado mais escuro
+- #8C2703: marrom vermelho
+- #591202: verniz claro
+- #260101: verniz escuro 
+
+font-family: 'Caveat', cursive;
+font-family: 'EB Garamond', serif;
+font-family: 'Marhey', cursive;
+font-family: 'Mynerve', cursive;
+font-family: 'Roboto', sans-serif;
+
+*/
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Header*/
+header{
+  width: 100%;
+  height: 95vh;
+}
+
+/* Navebar*/
+header nav#nav-esq{
+  width: 100%;
+  height: 150px;
+  background-color: #260101;
+
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+header nav#nav-esq div#logo{
+  width: 100px;
+  height: 120px;
+  margin-left: 5rem;
+}
+
+header nav#nav-esq div#logo img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Menu Hamburguer*/
+header nav#nav-esq ul#icone-menu{
+  display: none;
+}  
+
+header nav#nav-esq ul#icone-menu li{
+  list-style: none;
+}
+
+header nav#nav-esq ul#icone-menu li ion-icon{
+  font-size: 50px;
+  color: #FFF;
+  margin-right: 2rem;
+}
+
+header nav#nav-esq ul#menu-principal{
+  margin-left: 5rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+header nav#nav-esq ul#menu-principal li{
+  list-style: none;
+  margin-right: 2rem;
+}
+
+header nav#nav-esq ul#menu-principal li a{
+  text-decoration: none;
+  color: #FFF;
+  font-size: 100%;
+  /*text-shadow: 4px 6px 10px;*/
+  text-shadow: 4px 6px 10px #000;
+  padding-bottom: 10px;
+  transition: .3s ease-out;
+}
+
+header nav#nav-esq ul#menu-principal li a:hover{
+  border-bottom: 1px sold #FFF;
+  opacity: .6;
+}  
+
+
