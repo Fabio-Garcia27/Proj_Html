@@ -32,3 +32,57 @@ font-family: 'Roboto', sans-serif;
     }  
 }
 
+@media screen and (max-width: 600px){
+    header{
+        /*Deixar a cor com menos brilho*/
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.2)), url('../images/headerCapaP.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }  
+}
+
+/*Navebar*/
+@media screen and (max-width: 1110px){
+    header nav#nav-esquerda ul.menu-principal li a{
+        font-size: 90%;
+    }
+}
+
+@media screen and (max-width: 970px){
+    header nav#nav-esquerda div#logo{
+        margin-left: 1rem;
+    }
+    /*Menu Hamburguer*/
+    header nav#nav-esquerda{
+        justify-content: space-between;
+    }
+    header nav#nav-esquerda ul#icone-menu{
+        display: flex;
+    }    
+    header nav#nav-esquerda ul#icone-menu li#menux{
+        display: none;
+    }
+    /*Menu*/
+    header nav#nav-esquerda ul#menu-principal{
+        flex-direction: column;
+        width: 80%;
+        height: 70vh;
+        flex-direction: column;
+        background: linear-gradient(rgba(69,133,140) 0%, rgba(54,176,224) 45%, rgba(217,43,4) 100%);
+        padding-top: 5rem;
+
+        position: absolute;
+        top:  7rem;
+        right: 0;
+        z-index: 999;
+
+        display: none;
+    }
+    header nav#nav-esquerda ul.menu-principal li{
+        margin: .5rem;    
+    }
+    header nav#nav-esquerda ul.menu-principal li a{
+        font-size: 120%;
+    }
+}    
