@@ -170,3 +170,26 @@ header div.chamada h2{
   animation-fill-mode: backwards;
 }
 
+/*Sobre*/
+section.sobre{
+  max-width: 100%;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+section.sobre div.sobre-mestre{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+section.sobre div.sobre-mestre img{
+  border: 2px solid #BF9765;
+}
+
+select.sobre div.sobre-mestre h2{
+  font-size: max(22px, 1.8vw);
+  margin-top: 10px;
+}
+
