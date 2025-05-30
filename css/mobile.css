@@ -60,17 +60,17 @@ font-family: 'Roboto', sans-serif;
     header nav#nav-esquerda ul#icone-menu{
         display: flex;
     }    
-    header nav#nav-esquerda ul#icone-menu li#menux{
+    header nav#nav-esquerda ul#icone-menu li#menuX{
         display: none;
     }
     /*Menu*/
-    header nav#nav-esquerda ul#menu-principal{
+    header nav#nav-esquerda ul.menu-principal{
         flex-direction: column;
         width: 80%;
         height: 70vh;
         flex-direction: column;
         background: linear-gradient(rgba(69,133,140) 0%, rgba(54,176,224) 45%, rgba(217,43,4) 100%);
-        padding-top: 5rem;
+        padding-top: .5rem;
 
         position: absolute;
         top:  7rem;
@@ -86,3 +86,4 @@ font-family: 'Roboto', sans-serif;
         font-size: 120%;
     }
 }    
+

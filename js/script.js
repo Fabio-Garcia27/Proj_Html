@@ -1,5 +1,5 @@
 // Ativando o menu mobile
-function mostraMenu(){
+function mostrarMenu(){
   $('nav#nav-esquerda ul.menu-principal').css('display', 'flex');
   $('nav#nav-esquerda ul.menu-principal').addClass('animate_animated animate_fadeInRight animate_slow');
 
@@ -18,7 +18,7 @@ let controle = true;
 
 $('nav#nav-esquerda ul#icone-menu').click(function(){
   if (controle ==  true){
-      mostraMenu();
+      mostrarMenu();
       controle = false;
   }else{
       esconderMenu();
