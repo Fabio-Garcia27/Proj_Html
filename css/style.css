@@ -238,19 +238,42 @@ section.solucao div.solucao-mestre div.solucao-texto p{
   margin: auto;
   color: #fff;
   text-shadow: 2px 2px 5px #181717;
-  font-size: max(16px 1vw);
+  font-size: max(16px, 1vw);
 }
 
 section.solucao div.solucao-mestre div.solucao-img{
-  width: 100%; /* faz a imagem ocupar toda a largura */
-  text-align: center; /* centraliza a imagem */
+  max-width: 400px; 
 }
 
 section.solucao div.solucao-mestre div.solucao-img img{
-  max-width: 100%; /* garante que a imagem não ultrapasse a largura do contêiner */
-  height: auto; /* mantém a proporção da imagem */
+  max-width: 100%; 
 }
 
+/*Seção de Makes*/
+section.makes{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 60px;
+}
 
+select.makes h2{
+  margin-bottom: 40px;
+  margin-bottom: 50px;
+  max-width: 850px;
+  font-size:  max(22px, 2.8vw);
+  text-align: center;
+  color: #BF9765;
+}
 
-
+section.makes div.makes-container{
+  width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}  
