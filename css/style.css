@@ -170,7 +170,7 @@ header div.chamada h2{
   animation-fill-mode: backwards;
 }
 
-/*Sobre*/
+/*Seção Sobre*/
 section.sobre{
   max-width: 100%;
   padding-top: 60px;
@@ -192,4 +192,65 @@ select.sobre div.sobre-mestre h2{
   font-size: max(22px, 1.8vw);
   margin-top: 10px;
 }
+
+/*Seção Mulheres Merecem*/
+section.solucao{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 5px solid #45858c;
+  border-bottom: 5px solid #45858c;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 60px;
+  background-color: #D9765F;
+}
+
+section.solucao h2{
+  margin-top: 40px;
+  margin-bottom: 50px;
+  max-width: 950px;
+  text-align: center;
+  color: #FFF;
+  font-size: max(22px, 2.8vw);
+}  
+
+section.solucao div.solucao-mestre{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+  /*flex-direction: column;*/
+}
+
+section.solucao div.solucao-mestre div.solucao-texto{
+  max-width: 800px;
+  text-align: left;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}  
+
+section.solucao div.solucao-mestre div.solucao-texto p{
+  width: 95%;
+  margin: auto;
+  color: #fff;
+  text-shadow: 2px 2px 5px #181717;
+  font-size: max(16px 1vw);
+}
+
+section.solucao div.solucao-mestre div.solucao-img{
+  width: 100%; /* faz a imagem ocupar toda a largura */
+  text-align: center; /* centraliza a imagem */
+}
+
+section.solucao div.solucao-mestre div.solucao-img img{
+  max-width: 100%; /* garante que a imagem não ultrapasse a largura do contêiner */
+  height: auto; /* mantém a proporção da imagem */
+}
+
+
+
 
