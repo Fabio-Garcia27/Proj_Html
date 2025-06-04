@@ -1,3 +1,5 @@
+/*Fábio 04/06/2025 - Página de Login-CSS*/
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
@@ -25,6 +27,7 @@ body {
     color: #fff;
     padding: 30px 40px;
     box-shadow: rgba(0, 0, 0, .2);
+    backdrop-filter: blur(50px);
 }
 
 .container h1 {
@@ -43,7 +46,7 @@ body {
     width: 100%; 
     height: 100%;  
     background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius:40px;
     outline: none;
     font-size: 16px;
@@ -52,5 +55,79 @@ body {
 }
 
 .input-box input::placeholder {
-        color: #fff;
-}            
+        color: #c5c5c5;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);    
+    font-size: 20px;
+} 
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    margin: -15px 0 15px;
+}
+
+/*
+margin & padding
+1 valor - margin: 20px - todos os lados
+2 valores - margin: 20px 30px - em cima e embaixo, dos lados
+3 valores - padding: 20px 10px 30px - em cima, dos lados e embaixo
+4 valores - margin: 10px 30px 12px 33px - em cima, direita, embaixo e esquerda
+*/
+
+.remember-forgot label input {
+    accent-color: #fff;    
+    margin-right: 5px;
+}    
+
+.remember-forgot a {
+    text-decoration: none;    
+    color: #fff;
+}    
+
+.remember-forgot a:hover {
+    text-decoration: underline;        
+}
+
+.login {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    margin-top: 20px;
+}
+
+.login:hover {
+    background-color: transparent;    
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: 0.5s;
+}
+
+.registrar-link {
+    font-size: 14px;    
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.registrar-link a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.registrar-link a:hover {
+    text-decoration: underline;
+}
+  
