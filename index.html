@@ -13,11 +13,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=EB+Garamond:wght@500&family=Mynerve&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=EB+Garamond:wght@500&family=Marhey:wght@400;600;700&family=Mynerve&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
 
     <!--Meus links*-->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/mobile.css">
+    <link rel="stylesheet" href="./css/animacao.css">
 
 </head>
 <!--Corpo-->
@@ -44,7 +45,7 @@
         <div class="chamada">
             <h1>Maquiagem & Cia</h1>
             <h2>Toda Mulher merece uma maquiagem incrível!</h2>
-            <a href="#" target="_blank">Quero Agendar</a>
+            <a href="https://wa.me/5544997220216?text=Ol%C3%A1%2C%20quero%20agendar%20um%20hor%C3%A1rio!" target="_blank">Quero Agendar</a>
             <!--Se o seu número de telefone for +55 11 12345-6789, o link seria: -->
             <!--<a href="https://wa.me/5511123456789?text=Ol%C3%A1%2C%20quero%20agendar%20um%20hor%C3%A1rio!" target="_blank">Quero Agendar</a> -->
         </div>
@@ -102,43 +103,67 @@
         </section> 
         <section class="makes">
             <h2>A maquiagem pode ser uma ferramenta poderosa.</h2>
-
             <div class="makes-container">
-                <div class="row row-cols-1 row-cols-md-2 g4">
+                <div class="row row-cols-1 row-cols-md-3 g4">
                     <div class="col">
                         <div class="card">
-                            <img src="./images/makes001.png" class="card-img-top" alt="...">
+                            <img src="./images/makes001.png" class="card-img-top" alt="makes001">
                             <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">Este é um cartão mais longo com texto de apoio abaixo como uma introdução natural ao conteúdo adicional. Este conteúdo é um pouco mais longo.</p>
+                              <h5 class="card-title">Make Noiva</h5>
+                              <p class="card-text">Make marcante para o evento da sua vida, a noiva mais bela, elegante e glarmurosa.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card">
-                            <img src="./images/makes002.png" class="card-img-top" alt="...">
+                            <img src="./images/makes002.png" class="card-img-top" alt="makes002"> 
                             <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">Este é um cartão mais longo com texto de apoio abaixo como uma introdução natural ao conteúdo adicional. Este conteúdo é um pouco mais longo.</p>
+                              <h5 class="card-title">Make-Cabelo</h5>
+                              <p class="card-text">Make e Cabelo, charme, requinte, estilo, suavidade e beleza.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card">
-                            <img src="./images/makes003.png" class="card-img-top" alt="...">
+                        <div class="card img-make">
+                            <img src="./images/makes003.png" class="card-img-top" alt="makes003"> 
                             <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">Este é um cartão maior com texto de apoio abaixo como uma introdução natural ao conteúdo adicional.</p>
+                              <h5 class="card-title">Make Casual</h5>
+                              <p class="card-text">Make moderna, casual, para o dia a dia, com elegância, charme e beleza.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>  
-
         </section>       
     </main>
     <!--Rodapé-->
-    <footer></footer>
+    <footer>
+        <div class="footer-container">
+            <div class="logo-footer">
+                <img src="./images/logo-footer.png" alt="logo footer">                    
+            </div>
+            <div class="footer-info">
+                <nav class="nav-footer">
+                    <ul class="menu-principal">
+                        <li><a href="#">Home</a></li>  
+                        <li><a href="#">Sobre</a></li>  
+                        <li><a href="#">Mulheres Merecem</a></li>  
+                        <li><a href="#">Makes</a></li>                 
+                        <li><a href="#">Contato</a></li>                                          
+                    </ul>                    
+                </nav>
+                <div class="cartoes">
+                    <span>Parcelamos até em 12x</span>
+                    <div class="footer-img-cartoes">
+                         <img src="./images/cartoes-credito-pix.png" alt="Logo Cartões Pix">                         
+                    </div>
+                </div>               
+            </div>
+        </div>
+        <span class="autorais">
+            Copyright © Maquiagem & Cia. Todos os direitos reservados.
+        </span>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> 
 
@@ -154,6 +179,7 @@
     <script nomodule="" src="https://unpkg.com/ionicons@5.5.4/dist/ionicons/ionicons.js"></script>    
 
     <script src="./js/script.js"></script> 
+    <script src="./js/animacao.js"></script>
     
 </body>
 </html>

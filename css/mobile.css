@@ -87,3 +87,13 @@ font-family: 'Roboto', sans-serif;
     }
 }    
 
+/*Footer*/
+@media screen and (max-width: 765px){
+    footer div.footer-container div.footer-info{
+        width: 95%;
+    }  
+    footer div.footer-container div.footer-info div.cartoes div.footer-img-cartoes{
+        max-width: 200px;
+    }      
+}
+
