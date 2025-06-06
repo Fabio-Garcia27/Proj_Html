@@ -35,14 +35,19 @@ Senha:- Wizz4gPc8AFoqOmx
 import express from 'express'
 const app = express()
 
+const port = 3000;
+
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 app.use(express.json())
 
-const users = []
+app.use(express.urlencoded({ extended: true }));
 
-//Criar usuário
+const users = []
+const cadastro  = []
+
+// Fábio 05/06/25 Criar usuário
 app.post('/usuarios', async (req, res) => {
     await prisma.user.create({
         data:{
@@ -51,8 +56,25 @@ app.post('/usuarios', async (req, res) => {
             age: req.body.age
         }
     })
-
     users.push(req.body) 
+    //console.log(req.body)    
+    res.status(201).json(req.body)
+})
+// Fábio 06/06/25 Criar Cadastro
+app.post('/cadastro', async (req, res) => {
+    await prisma.cad.create({
+        data:{
+            email: req.body.email,
+            name: req.body.name,
+            age: req.body.age,
+            ender: req.body.ender,
+            num: req.body.num,
+            cid: req.body.cid,
+            est: req.body.est,
+            cel:req.body.cel 
+        }
+    })
+    cadastro.push(req.body) 
     //console.log(req.body)    
     res.status(201).json(req.body)
 })
@@ -67,15 +89,37 @@ app.get('/usuarios', async (req, res) => {
             where: {
                 name: req.query.name, 
                 email: req.query.email,
-                age: req.query.age  
+                age: req.query.age
             }
         })
 
     }else{
         const users = await prisma.user.findMany()
     }
-
     res.status(200).json(users)
+})
+// Listar cadastro
+app.get('/cadastro', async (req, res) => {
+    let cadastro = []
+
+    if (req.query){
+        cadastro = await prisma.cad.findMany({
+            where: {
+                name: req.query.name, 
+                email: req.query.email,
+                age: req.query.age, 
+                ender: req.query.ender,
+                num: req.query.num,
+                cid: req.query.cid,
+                est: req.query.est,
+                cel:req.query.cel 
+            }
+        })
+
+    }else{
+        const cadastro = await prisma.cad.findMany()
+    }
+    res.status(200).json(cadastro)
 })
 
 //Editar usuário
@@ -92,12 +136,42 @@ app.put('/usuarios/:id', async (req, res) => {
         }
     })
     res.status(201).json(req.body)
+}) 
+//Editar cadastro
+app.put('/cadastro/:id', async (req, res) => {
+    //console.log(req)
+    await prisma.cad.update({
+        where:{
+            id: req.params.id
+        },
+        data:{
+            email: req.body.email,
+            name: req.body.name,
+            age: req.body.age,
+            ender: req.body.ender,
+            num: req.body.num,
+            cid: req.body.cid,
+            est: req.body.est,
+            cel:req.body.cel 
+        }
+    })
+    res.status(201).json(req.body)
 })  
 
 //deletar usuário
 app.delete('/usuarios/:id', async (req, res) => {
     //console.log(req)
     await prisma.user.delete({
+        where:{
+            id: req.params.id
+        }
+    })
+    res.status(200).json({Mensagem: "Usuário deletado com sucesso!"})
+})   
+//deletar cadastro
+app.delete('/cadastro/:id', async (req, res) => {
+    //console.log(req)
+    await prisma.cad.delete({
         where:{
             id: req.params.id
         }
