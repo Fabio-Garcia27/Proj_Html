@@ -33,6 +33,7 @@ Senha:- Wizz4gPc8AFoqOmx
 */
 
 import express from 'express'
+import cors from 'cors'
 const app = express()
 
 const port = 3000;
@@ -44,22 +45,10 @@ app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }));
 
-const users = []
+app.use(cors())
+
 const cadastro  = []
 
-// Fábio 05/06/25 Criar usuário
-app.post('/usuarios', async (req, res) => {
-    await prisma.user.create({
-        data:{
-            email: req.body.email,
-            name: req.body.name,
-            age: req.body.age
-        }
-    })
-    users.push(req.body) 
-    //console.log(req.body)    
-    res.status(201).json(req.body)
-})
 // Fábio 06/06/25 Criar Cadastro
 app.post('/cadastro', async (req, res) => {
     await prisma.cad.create({
@@ -80,24 +69,6 @@ app.post('/cadastro', async (req, res) => {
 })
 
 //request, responde = req, res
-// Listar usuário
-app.get('/usuarios', async (req, res) => {
-    let users = []
-
-    if (req.query){
-        users = await prisma.user.findMany({
-            where: {
-                name: req.query.name, 
-                email: req.query.email,
-                age: req.query.age
-            }
-        })
-
-    }else{
-        const users = await prisma.user.findMany()
-    }
-    res.status(200).json(users)
-})
 // Listar cadastro
 app.get('/cadastro', async (req, res) => {
     let cadastro = []
@@ -105,8 +76,8 @@ app.get('/cadastro', async (req, res) => {
     if (req.query){
         cadastro = await prisma.cad.findMany({
             where: {
-                name: req.query.name, 
                 email: req.query.email,
+                name: req.query.name, 
                 age: req.query.age, 
                 ender: req.query.ender,
                 num: req.query.num,
@@ -122,21 +93,6 @@ app.get('/cadastro', async (req, res) => {
     res.status(200).json(cadastro)
 })
 
-//Editar usuário
-app.put('/usuarios/:id', async (req, res) => {
-    //console.log(req)
-    await prisma.user.update({
-        where:{
-            id: req.params.id
-        },
-        data:{
-            email: req.body.email,
-            name: req.body.name,
-            age: req.body.age
-        }
-    })
-    res.status(201).json(req.body)
-}) 
 //Editar cadastro
 app.put('/cadastro/:id', async (req, res) => {
     //console.log(req)
@@ -158,16 +114,6 @@ app.put('/cadastro/:id', async (req, res) => {
     res.status(201).json(req.body)
 })  
 
-//deletar usuário
-app.delete('/usuarios/:id', async (req, res) => {
-    //console.log(req)
-    await prisma.user.delete({
-        where:{
-            id: req.params.id
-        }
-    })
-    res.status(200).json({Mensagem: "Usuário deletado com sucesso!"})
-})   
 //deletar cadastro
 app.delete('/cadastro/:id', async (req, res) => {
     //console.log(req)
@@ -178,7 +124,6 @@ app.delete('/cadastro/:id', async (req, res) => {
     })
     res.status(200).json({Mensagem: "Usuário deletado com sucesso!"})
 })   
-
 
 app.listen(3000)
 
