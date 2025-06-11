@@ -16,14 +16,7 @@ datasource db {
 //id    String   @id @default(auto()) @map("_id") @db.ObjectId
 //id    String   @id @default(cuid()) @map("_id")
 // Fábio 06/06/25 Criar Usuário
-model User {
-  id    String   @id @default(auto()) @map("_id") @db.ObjectId
-  email String   @unique
-  name  String
-  age   String
-}
-// Fábio 06/06/25 Criar Cadastro
-model Cad {
+model user {
   id    String   @id @default(auto()) @map("_id") @db.ObjectId
   email String   @unique
   name  String
@@ -33,6 +26,6 @@ model Cad {
   cid   String // novo campo
   est   String // novo campo
   cel   String // novo campo
+  createdAt DateTime @default(now())
 }
-
 
