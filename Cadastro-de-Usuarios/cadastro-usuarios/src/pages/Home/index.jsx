@@ -32,14 +32,22 @@ function Home() {
       est: inputEst.current.value,
       cel: inputCel.current.value
     })
-
     getUsers()
+    // Limpar formulário
+    inputEmail.current.value = '';
+    inputName.current.value = '';
+    inputAge.current.value = '';
+    inputEnder.current.value = '';
+    inputNum.current.value = '';
+    inputCid.current.value = '';
+    inputEst.current.value = '';
+    inputCel.current.value = '';
   }
-
 
   // Deletar Usuários
   async function deleteUsers(id) {  
     await api.delete(`/usuarios/${id}`) 
+    alert('Usuário deletado com sucesso!')
     getUsers()
   }
 
