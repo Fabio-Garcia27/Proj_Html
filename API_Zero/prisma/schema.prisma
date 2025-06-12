@@ -26,6 +26,7 @@ model user {
   cid   String // novo campo
   est   String // novo campo
   cel   String // novo campo
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) 
+  updatedAt DateTime @updatedAt
 }
 

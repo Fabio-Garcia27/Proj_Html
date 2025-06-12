@@ -87,7 +87,7 @@ app.get('/usuarios', async (req, res) => {
 
 //Editar usuário
 app.put('/usuarios/:id', async (req, res) => {
-    //console.log(req)
+    //console.log(`Recebida requisição PUT para o ID: ${userId}`);
     await prisma.user.update({
         where:{
             id: req.params.id
@@ -95,9 +95,9 @@ app.put('/usuarios/:id', async (req, res) => {
         data:{
             email: req.body.email,
             name: req.body.name,
-            age: req.body.age,
+            age:  parseInt(req.body.age), //req.body.age, // Converter para número inteiro
             ender: req.body.ender,
-            num: req.body.num,
+            num: parseInt (req.body.num), // Converter para número inteiro
             cid: req.body.cid,
             est: req.body.est,
             cel:req.body.cel 

@@ -20,52 +20,6 @@ function Home() {
     setUsers(usersFromApi.data)
   }
 
-  const [editingUserId, setEditingUserId] = useState(null);
-
-  // Função para criar ou atualizar um usuário
-  async function createOrUpdateUser() {
-    if (editingUserId) {
-        // Atualizar usuário
-        await editUsers(editingUserId);
-        setEditingUserId(null);
-        // Criar novo usuário
-    } else {
-      await createUsers();
-    }
-  }
-
-  // Editar Usuários - criado 12/06/2025
-  async function editUsers(id) {
-    const user = users.find((user) => user.id === id);
-    //alert(id);
-    const updateUser = {
-      id: id,
-      email: inputEmail.current.value,
-      name: inputName.current.value,
-      age: inputAge.current.value,
-      ender: inputEnder.current.value,
-      num: inputNum.current.value,
-      cid: inputCid.current.value,
-      est: inputEst.current.value,
-      cel: inputCel.current.value,
-    };
-      await api.put(`/usuarios/${id}`, updateUser);
-      alert('Usuário atualizado com sucesso!');
-
-      // Limpe os campos do formulário
-      inputEmail.current.value = '';
-      inputName.current.value = '';
-      inputAge.current.value = '';
-      inputEnder.current.value = '';
-      inputNum.current.value = '';
-      inputCid.current.value = '';
-      inputEst.current.value = '';
-      inputCel.current.value = '';
-      getUsers();
-  }
-  // Editar Usuários - criado 12/06/2025
-
-
   // Criar Usuários
   async function createUsers() {
       await api.post('/usuarios',{
@@ -78,6 +32,7 @@ function Home() {
       est: inputEst.current.value,
       cel: inputCel.current.value
     })
+    getUsers()
     // Limpar formulário
     inputEmail.current.value = '';
     inputName.current.value = '';
@@ -89,7 +44,6 @@ function Home() {
     inputCel.current.value = '';
 
     alert('Usuário cadastrado com sucesso!');
-    getUsers()
   }
 
   // Deletar Usuários
@@ -99,11 +53,42 @@ function Home() {
     getUsers()
   }
 
+  // Editar Usuários - criado 12/06/2025
+  async function editUsers(id) {
+    const users = users.find((user) => user.id === id);
+    const updatedUsers = {
+      email: inputEmail.current.value,
+      name: inputName.current.value,
+      age: inputAge.current.value,
+      ender: inputEnder.current.value,
+      num: inputNum.current.value,
+      cid: inputCid.current.value,
+      est: inputEst.current.value,
+      cel: inputCel.current.value,
+    };
+      await api.put(`/usuarios/${id}`, updatedUsers);
+      getUsers();
+      alert('Usuário atualizado com sucesso!');
+  }
+  // Editar Usuários - criado 12/06/2025
+
   useEffect(() => {
     getUsers()
   }, [])
 
-   return (
+ function populateForm(user) {
+  inputEmail.current.value = user.email;
+  inputName.current.value = user.name;
+  inputAge.current.value = user.age;
+  inputEnder.current.value = user.ender;
+  inputNum.current.value = user.num;
+  inputCid.current.value = user.cid;
+  inputEst.current.value = user.est;
+  inputCel.current.value = user.cel;
+}
+
+
+  return (
     <div className="container">
       <form>
         <h1>Cadastro de Usuário</h1>
@@ -115,10 +100,7 @@ function Home() {
         <input type="text" name='cidade' placeholder="Cidade" ref={inputCid} required/>
         <input type="text" name='estado' placeholder="Estado" ref={inputEst} required/>
         <input type="tel" name='celular' placeholder="Celular (99) 99999-9999" ref={inputCel} required/>
-
-        <button type="button" onClick={createOrUpdateUser} className="submit-button">
-         {editingUserId ? 'Atualizar Usuário' : 'Cadastrar Usuário'}
-        </button>
+        <button type="button" onClick={createUsers} className="submit-button">Cadastrar</button>
       </form>
       {users.map((user => (  
         <div key={user.id} className="card">
@@ -135,17 +117,13 @@ function Home() {
           <button onClick={() => deleteUsers(user.id)}>
             <img src={Trash} />
           </button>
-          <button style={{fontSize: '18px'}} onClick={() => {
-            inputEmail.current.value = user.email;
-            inputName.current.value = user.name;
-            inputAge.current.value = user.age;
-            inputEnder.current.value = user.ender;
-            inputNum.current.value = user.num;
-            inputCid.current.value = user.cid;
-            inputEst.current.value = user.est;
-            inputCel.current.value = user.cel;
-            setEditingUserId(user.id);
-          }}>Editar</button>
+          <button onClick={() => {
+            populateForm(user);
+            // Chamar a função editUser quando o usuário salvar as alterações
+            }}>
+              Editar
+          </button>
+
         </div>
       )))}
     </div>
