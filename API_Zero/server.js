@@ -115,6 +115,20 @@ app.delete('/usuarios/:id', async (req, res) => {
         }
     })
     res.status(200).json({Mensagem: "Usuário deletado com sucesso!"})
-})   
+})  
 
+/*
+//criar arquivo CSV
+function criarArquivoCSV() {
+  const csv = users.map((user) => {
+    return `${user.name},${user.age},${user.email},${user.ender},${user.num},${user.cid},${user.est},${user.cel}`;
+  }).join('\n');
+
+  const blob = new Blob([`nome,idade,email,ender,num,cid,est,cel\n${csv}`], { type: 'text/csv' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'usuarios.csv';
+  link.click();
+}
+*/
 app.listen(3000)
