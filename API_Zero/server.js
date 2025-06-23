@@ -31,6 +31,9 @@ import cors from 'cors'
 const app = express()
 
 const port = 3000;
+app.listen(port, () => {
+    console.log(`Servidor Rodando na Porta ${port}`);
+})
 
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
@@ -131,4 +134,4 @@ function criarArquivoCSV() {
   link.click();
 }
 */
-app.listen(3000)
+//app.listen(3000)

@@ -32,6 +32,11 @@ font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 
+/*Retirar barra de rolagem*/
+::-webkit-scrollbar{
+  display: none;
+}
+
 h1{
   font-family: 'Mynerve', cursive;  
   text-shadow: 4px 4px 6px #000;
@@ -56,11 +61,12 @@ div.chamada a{
   background: linear-gradient(rgba(217,197,137,1) 0%, rgba(140,28,58,1) 50%, rgba(140,28,58,1) 100%);
 
   display: inline-block;
+
   animation-name: HeaderA-moverParaCima;
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   animation-delay: 1s;
   animation-timing-function: ease-out;
-  animation-fill-mode: backwards;  
+  animation-fill-mode: backwards;
   transition: .3s ease-in-out;
 }
 
@@ -77,6 +83,7 @@ header{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
   position: relative;
 }
 
@@ -156,21 +163,21 @@ header div.chamada{
 header div.chamada h1{
   color: #fff;
   animation-name: HeaderH1-moverParaDireita;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-timing-function: ease-out;
 }
 
 header div.chamada h2{
   color: #D9C589;
   margin-bottom: 55px;
-  animation-name: HeaderH1-moverParaEsquerta;
+  animation-name: HeaderH2-moverParaEsquerta;
   animation-duration: 1.5s;
   animation-delay: 0.5s;
   animation-timing-function: ease-out;
   animation-fill-mode: backwards;
 }
 
-/*Sobre*/
+/*Seção Sobre*/
 section.sobre{
   max-width: 100%;
   padding-top: 60px;
@@ -193,3 +200,174 @@ select.sobre div.sobre-mestre h2{
   margin-top: 10px;
 }
 
+/*Seção Mulheres Merecem*/
+section.solucao{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 5px solid #45858c;
+  border-bottom: 5px solid #45858c;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 60px;
+  background-color: #D9765F;
+}
+
+section.solucao h2{
+  margin-top: 40px;
+  margin-bottom: 50px;
+  max-width: 950px;
+  text-align: center;
+  color: #FFF;
+  font-size: max(22px, 2.8vw);
+}  
+
+section.solucao div.solucao-mestre{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+  /*flex-direction: column;*/
+}
+
+section.solucao div.solucao-mestre div.solucao-texto{
+  max-width: 800px;
+  text-align: left;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}  
+
+section.solucao div.solucao-mestre div.solucao-texto p{
+  width: 95%;
+  margin: auto;
+  color: #fff;
+  text-shadow: 2px 2px 5px #181717;
+  font-size: max(16px, 1vw);
+}
+
+section.solucao div.solucao-mestre div.solucao-img{
+  max-width: 400px; 
+}
+
+section.solucao div.solucao-mestre div.solucao-img img{
+  max-width: 100%; 
+}
+
+/*Seção de Makes*/
+section.makes{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 60px;
+}
+
+select.makes h2{
+  margin-bottom: 40px;
+  margin-bottom: 50px;
+  max-width: 850px;
+  font-size:  max(22px, 2.8vw);
+  text-align: center;
+  color: #BF9765;
+}
+
+section.makes div.makes-container{
+  width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}  
+
+/*Seção de footer*/
+footer{
+  width: 100%;
+  background-color: #5c451b;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer div.footer-container{
+  width: 100%;  
+  display: flex;
+  flex-flow: row wrap;   
+  align-items: center;
+  justify-content: center; 
+}
+
+footer div.footer-container div.logo-footer{
+  width: 150px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  cursor: pointer;
+  margin-right: 20px; /* Adicionado espaçamento */  
+}
+
+footer div.footer-container div.logo-footer img{
+  max-width: 100%;
+}
+
+footer div.footer-container div.footer-info{
+  width: 70%;
+  margin-bottom: 50px;
+  padding-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around; 
+  align-items: center;
+ } 
+
+footer div.footer-container div.footer-info nav.nav-footer ul{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+footer div.footer-container div.footer-info nav.nav-footer ul li{
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+footer div.footer-container div.footer-info nav.nav-footer ul li a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 110%;
+  transition: .3s ease-out;
+}  
+
+footer div.footer-container div.footer-info nav.nav-footer ul li a:hover{
+  border: 2px solid #D9C589;
+}
+
+footer div.footer-container div.footer-info div.cartoes{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer div.footer-container div.footer-info div.cartoes span{
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  font-size: max(16px, 1.5vw);
+  margin-top: 15px;
+}  
+
+footer div.footer-container div.footer-info div.cartoes div.footer-img-cartoes{
+  max-width: 100%;
+}
+
+footer span.autorais{
+  color: #FFF;
+  font-size: max(14px, .8vw);
+  margin-top: 20px;
+}  
