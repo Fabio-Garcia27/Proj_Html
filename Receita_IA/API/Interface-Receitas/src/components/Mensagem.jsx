@@ -1,5 +1,3 @@
-
-
 const Mensagem = ({mensagem, loading}) => {
     const isBot = mensagem.remetente === 'bot'
     

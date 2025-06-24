@@ -51,8 +51,8 @@ const ChatDas = () => {
         <div className="min-h-screen bg-gradient-to-br from-purple-200 via-gray-50 to-emerald-50 p-4">
             <div className="container mx-auto max-w-4xl">
                 <header className="text-center mb-8">
-                    <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-emerald-600 text-transparent bg-clip-text mb-2">🥘Chat Chefe🥘</h1> 
-                    <p className=" text-gray-600 text-lg">Seu assistente pessoal para receitas deliciosas</p>       
+                    <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-emerald-600 text-transparent bg-clip-text mb-2">Chat Software</h1> 
+                    <p className=" text-gray-600 text-lg">Seu assistente pessoal para desenvolver software</p>       
                 </header>
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl overflow-y-scroll shadow-xl h-[600px] border border-gray-100 flex-col">
                         <ListaMensagens mensagens={mensagens} loading={loading}/>   
