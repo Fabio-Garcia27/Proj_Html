@@ -32,6 +32,13 @@ console.log(personagem.magia) // lista 1 item
 
 // funções = input processa output
 
-function conversao() {
-x = 0;
+function somar(a, b) {
+    let resultado = a + b   
+    return resultado
 }
+
+let x = somar(15, 5)
+let y = somar(2, 8)
+
+console.log(x)
+console.log(y)
