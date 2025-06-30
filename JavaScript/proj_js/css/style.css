@@ -23,6 +23,13 @@ body {
     color: var(--primary);
 }
 
+.botao {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 header {
     text-align: center;
     margin: 4rem 2rem;
@@ -66,7 +73,11 @@ main section input {
 }
 
 footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     text-align: center;
+    padding: 10px;
     font-size: 1.4rem;
     color: var(--secondary);
 }
