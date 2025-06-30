@@ -11,6 +11,15 @@ brlInput.addEventListener("keyup", () => {
     convert("brl-to-usd")
 })
 
+// Após executar informação no campo é Blur 
+usdInput.addEventListener("blur", () => {
+    usdInput.value = formatCurrency(usdInput.value)
+})
+
+brlInput.addEventListener("blur", () => {
+    brlInput.value = formatCurrency(brlInput.value)
+})
+
 usdInput.value = "1000,00"
 convert("usd-to-brl")
 
