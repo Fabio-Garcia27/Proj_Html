@@ -10,8 +10,8 @@ export default function Page () {
                 ...
             </div>
             <div className="flex flex-col justify-center items-center gap-1 md:flex-row">
-                <div className="">Ainda não tem uma conta?</div>
-                <Link href="/singup">Cadastra-se</Link>
+                <div className="text-gray-500">Ainda não tem uma conta?</div>
+                <Link href="/singup" className="hover:underline">Cadastra-se</Link>
             </div>
         </div>
     )    
