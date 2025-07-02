@@ -3,12 +3,12 @@
 import {useRouter} from "next/navigation";
 import {useState} from "react";
 import { Input } from "../ui/input";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../ui/button";
 
-export const SigninForm = () => {
+export const SignupForm = () => {
 
     const router = useRouter();
+    const [nameField, setNameField] = useState('');
     const [emailField, setEmailField] = useState('');
     const [passwordField, setPasswordField] = useState('');
 
@@ -18,6 +18,12 @@ export const SigninForm = () => {
 
     return (
        <>
+            <Input 
+                placeholder="Digite seu nome" 
+                value={nameField}
+                onChange={t => setNameField(t)}
+                //icon={faHeart}
+            />       
             <Input 
                 placeholder="Digite seu e-mail" 
                 value={emailField}
@@ -31,7 +37,7 @@ export const SigninForm = () => {
                 password={true}
             /> 
             <Button
-                label="Enter"
+                label="Criar conta"
                 onClick={handleEnterButton}
                 size={1}
             />    
