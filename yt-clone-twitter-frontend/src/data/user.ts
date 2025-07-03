@@ -4,7 +4,7 @@ export const user: User = {
   slug: 'Garcia',
   name: 'Fábio Garcia',
   avatar: 'https://ui-avatars.com/api/?name=Fabio+Garcia&background=007bff&color=FFFFFF&rounded=true',
-  cover: 'https://source.unsplash.com/featured/?travel,bag',
+  cover: 'https://br.freepik.com/fotos-gratis/conceito-de-viagens-com-bagagem-e-chapeu_16139011.htm',
   bio: 'Administrador e DAS',
   link: 'https://unipar.br',
   postCount: 127
