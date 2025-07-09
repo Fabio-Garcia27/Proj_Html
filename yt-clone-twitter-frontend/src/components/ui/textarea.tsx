@@ -2,7 +2,6 @@ type Props = {
     placeholder: string;
     rows: number;
     value?: string;
-
 }
 
 export const Textarea = ({placeholder, rows, value}: Props) => {
@@ -12,7 +11,7 @@ export const Textarea = ({placeholder, rows, value}: Props) => {
                 className="flex-1 outline-none bg-transparent h-full p-5 resize-none"
                 placeholder={placeholder}   
                 rows={rows}
-                value={value}
+                defaultValue={value}
             />
         </div>    
     )
