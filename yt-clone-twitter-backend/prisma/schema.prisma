@@ -24,6 +24,8 @@ model User {
   link     String?
   tweets   Tweet[]
   likes    TweetLike[]
+  createdAt DateTime @default(now()) 
+  updatedAt DateTime @updatedAt
 }
 
 model Tweet {
@@ -35,6 +37,7 @@ model Tweet {
   answerOf  Int         @default(0)
   user      User        @relation(fields: [userSlug], references: [slug])
   likes     TweetLike[]
+  updatedAt DateTime @updatedAt
 }
 
 model TweetLike {
@@ -43,17 +46,23 @@ model TweetLike {
   tweetId  Int
   user     User   @relation(fields: [userSlug], references: [slug])
   tweet    Tweet  @relation(fields: [tweetId], references: [id])
+  createdAt DateTime @default(now()) 
+  updatedAt DateTime @updatedAt
 }
 
 model Follow {
   id        Int    @id @default(autoincrement())
   user1Slug String
   user2Slug String
+  createdAt DateTime @default(now()) 
+  updatedAt DateTime @updatedAt  
 }
 
 model Trend {
   id        Int      @id @default(autoincrement())
   hashtag   String
   counter   Int      @default(1)
+  createdAt DateTime @default(now()) 
   updatedAt DateTime @default(now())
 }
+
