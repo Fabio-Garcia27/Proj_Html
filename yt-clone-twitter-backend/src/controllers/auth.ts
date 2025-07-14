@@ -41,6 +41,7 @@ export const signup: RequestHandler = async (req, res) => {
     })
     // cria o token
     const token = '';
+    
     // retorna o resultado (token, user)
     res.status(201).json({
         token,
