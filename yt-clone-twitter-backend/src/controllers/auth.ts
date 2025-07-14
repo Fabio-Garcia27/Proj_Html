@@ -3,21 +3,24 @@ import { RequestHandler } from "express";
 import { signupSchema } from "../schemas/signup";
 import { createUser, findUserByEmail,findUserBySlug } from "../services/user";
 import slug from "slug";
-import { hash } from "bcrypt-ts";
-import { create } from "domain";
-import { email } from "zod";
+import { compare, hash } from "bcrypt-ts";
+import { createJWT } from "../utils/jwt";
+import { signinSchema } from "../schemas/signin";
+import { error } from "console";
 
+// validar os dados recebidos
 export const signup: RequestHandler = async (req, res) => {
-    // validar os dados recebidos
     const safeData = signupSchema.safeParse(req.body);
     if (!safeData.success) {
         return res.json({ error: safeData.error.flatten().fieldErrors });
     }
+
     // verificar email
     const hasEmail = await findUserByEmail(safeData.data.email);
     if (hasEmail) {
         return res.json({ error: 'E-mail já existe' });
     }
+
     // verificar slug
     let genSlug = true;
     let userSlug = slug(safeData.data.name);
@@ -30,8 +33,10 @@ export const signup: RequestHandler = async (req, res) => {
             genSlug = false;    
         }
     }
+
     // gerar hash de senha
     const hashPassword = await hash(safeData.data.password, 10);
+
     // cria o usuário
     const newUser = await createUser({
         slug: userSlug,
@@ -39,9 +44,10 @@ export const signup: RequestHandler = async (req, res) => {
         email: safeData.data.email,
         password: hashPassword
     })
+
     // cria o token
-    const token = '';
-    
+    const token = createJWT(userSlug);
+
     // retorna o resultado (token, user)
     res.status(201).json({
         token,
@@ -53,4 +59,27 @@ export const signup: RequestHandler = async (req, res) => {
     })
 }
 
+export const signin: RequestHandler = async (req, res) => {
+    const safeData = signinSchema.safeParse(req.body);
+    if (!safeData.success) {
+        return res.json({ error: safeData.error.flatten().fieldErrors });
+    }    
+
+    const user = await findUserByEmail(safeData.data.email);
+    if(!user) return res.status(401).json({ error: 'Acesso negado' });
+
+    const verifyPass = await compare(safeData.data.password, user.password);
+    if(!verifyPass) return res.status(401).json({ error: 'Acesso negado' });
+
+    const token = createJWT(user.slug);
+    
+    res.json({
+        token,
+        user: {
+            name: user.name,
+            slug: user.slug,
+            avatar: user.avatar
+        }  
+    })      
+}
 
