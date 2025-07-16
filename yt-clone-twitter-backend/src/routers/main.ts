@@ -1,21 +1,19 @@
-import {Router} from 'express';
+import {NextFunction, Router} from 'express';
 import * as pingController  from '../controllers/ping';
 import * as authController  from '../controllers/auth';
+import * as tweetController  from '../controllers/tweet';
+import { verifyJWT } from '../utils/jwt';
 
 export const mainRouter = Router();
 
 mainRouter.get('/ping', pingController.ping);
-// rota privada
-//mainRouter.get('/privateping');
+mainRouter.get('/privateping', verifyJWT, pingController.privatePing); // rota privada
 
-// rota de cadastro
-mainRouter.post('/auth/signup', authController.signup);
-
-// rota de login
-mainRouter.post('/auth/signin', authController.signin);
+mainRouter.post('/auth/signup', authController.signup); // rota de cadastro
+mainRouter.post('/auth/signin', authController.signin); // rota de login
 
 // rota dp tweet
-//mainRouter.post('/tweet');
+mainRouter.post('/tweet', verifyJWT, tweetController.addTweet);
 //mainRouter.get('/tweet/:id');
 //mainRouter.get('/tweet/:id/answers');
 //mainRouter.post('/tweet/:id/like');
