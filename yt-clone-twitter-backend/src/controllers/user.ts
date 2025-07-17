@@ -45,22 +45,5 @@ export const followToggle = async (req: ExtendedRequest, res: Response) => {
 
     const hasUserToBeFollowed = await findUserBySlug(slug);
     if (!hasUserToBeFollowed) return res.json({ error: 'Usuário inexistente' });
-    
-
-    if (userslug === slug) {
-        return res.json({ error: 'Você não pode seguir a si mesmo' });
-    }
-
-    try {
-        const isFollowing = await user.isFollowing(slug);
-        if (isFollowing) {
-            await user.unfollow(slug);
-            return res.json({ message: 'Você deixou de seguir o usuário.' });
-        } else {
-            await user.follow(slug);
-            return res.json({ message: 'Você começou a seguir o usuário.' });
-        }
-    } catch (err) {
-        return res.json({ error: 'Erro ao alternar o seguimento.' });
-    }
+ 
 }
