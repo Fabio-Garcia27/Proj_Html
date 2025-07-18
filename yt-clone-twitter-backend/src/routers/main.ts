@@ -3,6 +3,8 @@ import * as pingController  from '../controllers/ping';
 import * as authController  from '../controllers/auth';
 import * as tweetController  from '../controllers/tweet';
 import * as userController  from '../controllers/user';
+import * as feedController  from '../controllers/feed';
+import * as searchController  from '../controllers/search';
 import { verifyJWT } from '../utils/jwt';
 
 export const mainRouter = Router();
@@ -23,12 +25,12 @@ mainRouter.post('/tweet/:id/like', verifyJWT, tweetController.likeToggle);
 mainRouter.get('/user/:slug', verifyJWT, userController.getUser);
 mainRouter.get('/user/:slug/tweets', verifyJWT, userController.getUserTweets);
 mainRouter.post('/user/:slug/follow', verifyJWT, userController.followToggle);
-//mainRouter.put('/user');
+mainRouter.put('/user', verifyJWT, userController.updateUser);
 //mainRouter.put('/user/avatar');
 //mainRouter.put('/user/cover');
 
 // rota do sistema
-//mainRouter.get('/feed');
-//mainRouter.get('/search');
+mainRouter.get('/feed', verifyJWT, feedController.getFeed);
+mainRouter.get('/search' , verifyJWT, searchController.searchTweets);
 //mainRouter.get('/trending');
 //mainRouter.get('/suggestions');

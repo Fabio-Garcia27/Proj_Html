@@ -96,3 +96,24 @@ export const unfollow = async (user1Slug: string, user2Slug: string) => {
         where: { user1Slug, user2Slug }
     })
 }
+
+export const updateUserInfo = async (slug: string, data: Prisma.UserUpdateInput) => {
+    await prisma.user.update({
+        where: { slug },
+        data 
+    })    
+}
+
+export const getUserFollowing = async (slug: string) => {
+    const following = [];
+    const reqFollow = await prisma.follow.findMany({
+        select: { user2Slug: true },
+        where: { user1Slug: slug }    
+    })  
+    
+    for (let reqItem of reqFollow) {
+        following.push(reqItem.user2Slug);
+    }
+
+    return following;
+}
