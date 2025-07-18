@@ -165,7 +165,8 @@ export const findTweetsByBody = async (bodyContains: string, currentPage: number
             body: {
                 contains: bodyContains,
                 mode: 'insensitive'
-            }
+            },
+            answerOf: 0
         },
         orderBy: { createdAt: 'desc' },
         skip: currentPage * perPage,

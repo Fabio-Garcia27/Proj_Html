@@ -2,6 +2,7 @@ import slug from "slug";
 import { prisma } from "../utils/prisma";
 import { getPublicURL } from "../utils/url";
 import { Prisma } from "@prisma/client";
+import { pick } from "zod/v4/core/util.cjs";
 
 export const findUserByEmail = async (email: string) => {
     const user = await prisma.user.findFirst({
@@ -116,4 +117,31 @@ export const getUserFollowing = async (slug: string) => {
     }
 
     return following;
+}
+
+export const getUserSuggestions = async (slug: string) => {
+    const following = await getUserFollowing(slug);    
+    
+    const followingPlusMe = [...following, slug];
+
+    type Suggestion = Pick<
+        Prisma.UserGetPayload<Prisma.UserDefaultArgs>,
+        "name" | "avatar" | "slug"
+    >;
+
+    const suggestions: Suggestion[] = await prisma.$queryRaw`
+        Select
+            name, avatar, slug
+        From "User"    
+        Where
+            slug Not In (${followingPlusMe.join(',')})
+        Order by random()
+        Limit 2;    
+    `;
+
+    for (let sugIndex in suggestions) {
+        suggestions[sugIndex].avatar = getPublicURL(suggestions[sugIndex].avatar);
+    }
+
+    return suggestions;
 }
