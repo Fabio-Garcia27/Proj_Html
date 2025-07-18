@@ -12,7 +12,7 @@ const users = [
 ]
 
 app.get('/usuarios', function (request, response) {
-    response.json[users]
+    response.json(users)
 })
 
 app.post('/usuarios', function (request, response) {
