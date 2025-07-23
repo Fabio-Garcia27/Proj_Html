@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id     String  @id @default(cuid()) @map("_id")
+  name   String
+  email  String
+  status Boolean
+  age    Int
+  ender  String 
+  num    Int 
+  cid    String 
+  est    String 
+  cel    String 
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  //@@map("customers") usar nome de tabela diferente do banco de dados nesse caso Customer
+  @@map("customers")
+}
+
+/*
+ * model User {
+ * slug     String      @id
+ * email    String      @unique
+ * password String
+ * name     String
+ * avatar   String      @default("default.jpg")
+ * cover    String      @default("default.jpg")
+ * bio      String?
+ * link     String?
+ * tweets   Tweet[]
+ * likes    TweetLike[]
+ * createdAt DateTime @default(now())
+ * updatedAt DateTime @updatedAt
+ * }
+ * model Tweet {
+ * id        Int         @id @default(autoincrement())
+ * userSlug  String
+ * body      String
+ * image     String?
+ * createdAt DateTime    @default(now())
+ * answerOf  Int         @default(0)
+ * user      User        @relation(fields: [userSlug], references: [slug])
+ * likes     TweetLike[]
+ * updatedAt DateTime @updatedAt
+ * }
+ * model TweetLike {
+ * id       Int    @id @default(autoincrement())
+ * userSlug String
+ * tweetId  Int
+ * user     User   @relation(fields: [userSlug], references: [slug])
+ * tweet    Tweet  @relation(fields: [tweetId], references: [id])
+ * createdAt DateTime @default(now())
+ * updatedAt DateTime @updatedAt
+ * }
+ * model Follow {
+ * id        Int    @id @default(autoincrement())
+ * user1Slug String
+ * user2Slug String
+ * createdAt DateTime @default(now())
+ * updatedAt DateTime @updatedAt
+ * }
+ * model Trend {
+ * id        Int      @id @default(autoincrement())
+ * hashtag   String
+ * counter   Int      @default(1)
+ * createdAt DateTime @default(now())
+ * updatedAt DateTime @default(now())
+ * }
+ */
