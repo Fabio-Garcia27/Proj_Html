@@ -27,7 +27,6 @@ model Customer {
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  //@@map("customers") usar nome de tabela diferente do banco de dados nesse caso Customer
   @@map("customers")
 }
 

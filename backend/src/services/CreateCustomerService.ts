@@ -3,13 +3,13 @@ import prismaClient from "../prisma";
 interface CreateCustomerProps{
     name: string;
     email: string;
-    status: boolean;
     age: number;
     ender: string; 
     num: number; 
     cid: string; 
     est: string;
     cel: string;
+    status: boolean;
 }
 
 class CreateCustomerService {
@@ -23,13 +23,13 @@ class CreateCustomerService {
             data: {
                 name,
                 email,
-                status: true,
                 age,
                 ender,
                 num,
                 cid,
                 est,
-                cel    
+                cel,
+                status: true,                    
             }
         })
         return customer
