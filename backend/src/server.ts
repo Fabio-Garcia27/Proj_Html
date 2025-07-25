@@ -4,13 +4,17 @@ import cors from '@fastify/cors'
 
 const app = Fastify({ logger: true })
 
+// Registre os plugins necessários, como CORS
+app.register(cors, { 
+  origin: '*', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'] 
+})
+
 app.setErrorHandler((error, request, reply) => {
     reply.code(400).send({ message: error.message })    
 })
 
 const star = async () => {
-    
-    await app.register(cors);
     await app.register(routes);
     
     try{

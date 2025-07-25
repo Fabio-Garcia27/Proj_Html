@@ -20,6 +20,7 @@ interface CustomerProps{
 export default function App() {
 
   const [customers, setCustomers] = useState<CustomerProps[]>([]);
+
   const nameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const ageRef = useRef<HTMLInputElement | null>(null);
@@ -32,6 +33,17 @@ export default function App() {
   useEffect(() => {
     loadCustomers();
   }, [])
+
+async function clearCustomers() {
+  (emailRef.current as HTMLInputElement).value = '';
+  (nameRef.current as HTMLInputElement).value = '';
+  (ageRef.current as HTMLInputElement).value = '0';
+  (enderRef.current as HTMLInputElement).value = '';
+  (numRef.current as HTMLInputElement).value = '0';
+  (cidRef.current as HTMLInputElement).value = '';
+  (estRef.current as HTMLInputElement).value = '';
+  (celRef.current as HTMLInputElement).value = '';
+}  
 
 async function loadCustomers() {
   const response = await api.get("/customer")
@@ -53,7 +65,26 @@ async function handleSubmit(event: FormEvent) {
     est: estRef.current?.value,
     cel: celRef.current?.value
   })
+
+  clearCustomers(); 
+
   setCustomers(allCustomers => [...allCustomers, response.data])
+}
+
+async function handleDelete(id: string) {
+  try{
+    await api.delete("/customer", {
+      params: {
+        id: id,
+      }
+    })
+    const allCustomers = customers.filter((customer) => customer.id !== id)
+    setCustomers(allCustomers)
+  }catch(err) {
+    console.log(err);
+  }
+
+  clearCustomers(); 
 }
 
   return (
@@ -84,7 +115,7 @@ async function handleSubmit(event: FormEvent) {
             placeholder="Idade..."
             className="w-full mb-5 p-2 rounded bg-white"
             ref={ageRef}
-            //required
+            required
            />  
           <label className="font-medium text-white">Endereço:</label>
           <input
@@ -92,7 +123,7 @@ async function handleSubmit(event: FormEvent) {
             placeholder="Endereço Completo..."
             className="w-full mb-5 p-2 rounded bg-white"
             ref={enderRef}
-            //required
+            required
            />   
           <label className="font-medium text-white">Número:</label>
           <input
@@ -100,7 +131,7 @@ async function handleSubmit(event: FormEvent) {
             placeholder="Número do Endereço..."
             className="w-full mb-5 p-2 rounded bg-white"
             ref={numRef}
-            //required
+            required
            /> 
           <label className="font-medium text-white">Cidade:</label>
           <input
@@ -108,7 +139,7 @@ async function handleSubmit(event: FormEvent) {
             placeholder="Cidade..."
             className="w-full mb-5 p-2 rounded bg-white"
             ref={cidRef}
-            //required
+            required
            />   
           <label className="font-medium text-white">Estado:</label>
           <input
@@ -116,7 +147,7 @@ async function handleSubmit(event: FormEvent) {
             placeholder="Estado..."
             className="w-full mb-5 p-2 rounded bg-white"
             ref={estRef}
-            //required
+            required
            />  
           <label className="font-medium text-white">Celular:</label>
           <input
@@ -124,7 +155,7 @@ async function handleSubmit(event: FormEvent) {
             placeholder="Celular (99) 9-9999-9999"
             className="w-full mb-5 p-2 rounded bg-white"
             ref={celRef}
-            //required
+            required
            />   
           <label className="font-medium text-white">Status:</label>
           <select className="w-full mb-5 p-2 rounded bg-white">
@@ -154,6 +185,7 @@ async function handleSubmit(event: FormEvent) {
                 <p><span className="font-medium">Status:</span>{customer.status ? "Ativo" : "Inativo"}</p> 
             <button
               className="bg-red-500 w-7 h-7 flex items-center justify-center rounded-lg absolute right-0 -top-2"
+              onClick={() => handleDelete(customer.id)}
             >
               <FiTrash2 size={18} color="#fff"/>
             </button>
