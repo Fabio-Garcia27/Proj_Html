@@ -2,34 +2,37 @@
 import Tasks from "./components/Tasks";
 // @ts-expect-error: Missing type declarations for AddTask component
 import AddTask from "./components/AddTask";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 } from "uuid";
+// @ts-expect-error: Missing type declarations for Title component
+import Title from "./components/Title";
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Estudar Inglês",
-      description: "Estudar inglês para se tornar fluente",
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      title: "Estudar Programação",
-      description:
-        "Estudar programação para se tornar um desenvolvedor full stack",
-      isCompleted: false,
-    },
-    {
-      id: 3,
-      title: "Estudar Matemática",
-      description: "Estudar matemática para se tonar professor",
-      isCompleted: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks") ?? '[]')
+  )
 
-  function onTaskClick(taskId: number) {
-    const newTasks = tasks.map((task) => {
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))  
+  }, [tasks])
+  
+  //useEffect(() => {
+    //const fetchTasks = async () => {
+      //const response = await fetch(
+        //"https://jsonplaceholder.typicode.com/todos?_limit=10",
+        //{
+         // method: 'GET'
+        //}
+      //);
+      //const data = await response.json();
+      //setTasks(data)
+    //}
+    //Se quiser ativar API
+    //fetchTasks();
+  //}, [])
+  
+  function onTaskClick(taskId: string) {
+    const newTasks = tasks.map((task: { id: string; isCompleted: unknown; }) => {
       // preciso atualizar essa tarefa
       if (task.id === taskId) {
         return { ...task, isCompleted: !task.isCompleted };
@@ -41,8 +44,8 @@ function App() {
     setTasks(newTasks);
   }
 
-  function onDeleteTaskClick(taskId: number) {
-    const newTasks = tasks.filter((task) => task.id !== taskId);
+  function onDeleteTaskClick(taskId: string) {
+    const newTasks = tasks.filter((task: { id: string; }) => task.id !== taskId);
     setTasks(newTasks);
   }
 
@@ -59,17 +62,12 @@ function App() {
   return (
     <div className="w-h-screen bg-slate-500 flex justify-center p-6">
       <div className="w-[500px] space-y-4">
-        <h1 className="text-3xl text-slate-100 font-bold text-center">
-          Gerenciador de Tarefas
-        </h1>
-        <AddTask
-          onAddTaskSubmit={onAddTaskSubmit}
-        />
+        <Title>Gerenciador de Tarefas</Title>
+        <AddTask onAddTaskSubmit={onAddTaskSubmit} />
         <Tasks
           tasks={tasks}
           onTaskClick={onTaskClick}
-          onDeleteTaskClick={onDeleteTaskClick}
-        />
+          onDeleteTaskClick={onDeleteTaskClick} />
       </div>
     </div>
   );

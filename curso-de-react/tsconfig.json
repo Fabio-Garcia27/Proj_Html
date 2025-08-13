@@ -6,8 +6,9 @@
     "strict": true,
     "esModuleInterop": true,
     "checkJs": false,
-    "noEmit": true,    
-    "allowImportingTsExtensions": true
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "lib": ["ES2015", "DOM"]
   },
   "include": ["src/**/*"]
 }
